@@ -10,7 +10,7 @@ export default class Worker {
   }
 
   get fullName() {
-    return this.lastName + " " + this.firstName + " " + this.middleName;
+    return `${this.lastName} ${this.firstName} ${this.middleName}`;
   }
   
   getAge() {
@@ -23,7 +23,7 @@ export default class Worker {
     return age;
   }
 
-  getBithDateString() {
+  getBirthDateString() {
     const today = this.birthDate;
     let dd = today.getDate();
     let mm = today.getMonth() + 1;
@@ -34,14 +34,10 @@ export default class Worker {
   }
 
   getCurrentTime() {
-    const date = new Date();
-    const output = String(date.getDate()).padStart(2, '0') + '.' + String(date.getMonth() + 1).padStart(2, '0') + '.' + date.getFullYear();
+    const output = new Date().toLocaleString().replace(',','')
     return output;
   }
 }
-
-
-
 
 
 

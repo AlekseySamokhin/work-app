@@ -1,28 +1,3 @@
-//const isCheckboxOrRadio = (type) => ["checkbox", "radio"].includes("type");
-
-//const { form } = document.forms;
-
-//form.addEventListener("submit", function retrieveFormValue(event) {
-//  event.preventDefault();
-
-//  const { elements } = form;
-//  const values = {};
-
-//  for (let i = 0; i < elements.length; i++) {
-//    const formElement = elements[i];
-//    const { name } = formElement;
-
-//    if (name) {
-//      const { value, type, checked } = formElement;
-//      values[name] = isCheckboxOrRadio(type) ? checked : value;
-
-//      values[name] = isCheckboxOrRadio(type) ? checked : value;
-//    }
-//  }
-
-//  console.log(values);
-//});
-
 import Worker from "./worker.js";
 
 let workers = [];
@@ -44,6 +19,7 @@ function newWorker(worker) {
   const $workStart = document.createElement("td");
   const $dismissalDate = document.createElement("td");
 
+  $number.textContent = 
   $fio.textContent = worker.fullName;
   $birthDate.textContent = worker.getBirthDateString();
   $age.textContent = worker.getAge();
@@ -62,16 +38,26 @@ function newWorker(worker) {
     $workStart,
     $dismissalDate
   );
-
+  
   return $worker;
 }
 
+
 function render() {
-  $workerList.innerHTML = "";
-  for (const worker of workers) {
+  let workersCopy = [...workers];
+  $workerList.innerHTML = " ";
+  for (const worker of workersCopy) {
     $workerList.append(newWorker(worker));
   }
 }
+
+$workerListThAll.forEach((element) => {
+  element.addEventListener("click", function () {
+    column = this.dataset.column;
+    columnDir = !columnDir;
+    render();
+  });
+});
 
 document
   .getElementById("input-education")
