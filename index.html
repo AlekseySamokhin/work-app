@@ -12,10 +12,10 @@
 </head>
 
 <body class="bg-light bg-gradient">
-  <div class="container mt-3">
+  <div class="container-fluid mt-3">
     <h2 class="text-center mb-4">Информационная система для хранения информации <br> о персонале компании</h2>
     <div class="row">
-      <div class="col-4">
+      <div class="col-3">
         <form action="" id="add-worker" class="mb-1">
           <div class="mb-1">
             <label for="input-lastName" class="form-label"><b>Фамилия:</b></label>
@@ -54,17 +54,19 @@
           </div>
         </form>
       </div>
-      <div class="col-8">
+      <div class="col-9">
         <table class="table table-striped workers-table">
           <thead class="text-center">
-            <th data-column="fullName">#</th>
+            <th data-column="fullName">№</th>
             <th data-column="fullName">ФИО</th>
             <th data-column="birthDate">Дата рождения</th>
             <th data-column="age">Возраст</th>
             <th data-column="gender">Пол</th>
             <th data-column="education">Образование</th>
             <th data-column="workStart">Дата приема на работу</th>
-            <th data-column="dismissalDate">Дата увольнения</th>
+            <!--<th data-column="dismissalDate">Дата увольнения</th>-->
+            <th data-column="dismissalDate"></th>
+            <th data-column="dismissalDate"></th>
           </thead>
           <tbody class="table-workers-list" id="workers-list"></tbody>
         </table>

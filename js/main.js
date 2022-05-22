@@ -28,10 +28,6 @@ import Worker from "./worker.js";
 let workers = [];
 
 const $workerList = document.getElementById("workers-list");
-const $workerListThAll = document.querySelectorAll(".workers-list");
-
-let column = "fullName";
-let columnDir = true;
 
 function newWorker(worker) {
   const $worker = document.createElement("tr");
@@ -43,8 +39,10 @@ function newWorker(worker) {
   const $education = document.createElement("td");
   const $workStart = document.createElement("td");
   const $dismissalDate = document.createElement("td");
+  const $actions = document.createElement("td");
+  const $deleteBtn = document.createElement("button");
+  const $changeBtn = document.createElement("button");
 
- 
   $fio.textContent = worker.fullName;
   $birthDate.textContent = worker.getBirthDateString();
   $age.textContent = worker.getAge();
@@ -52,6 +50,22 @@ function newWorker(worker) {
   $education.textContent = worker.education;
   $workStart.textContent = worker.getCurrentTime();
   $dismissalDate.textContent = worker.dismissalDate;
+
+  // button delete
+  $deleteBtn.appendChild(document.createTextNode("Удалить"));
+  $deleteBtn.className = "btn btn-danger btn-sm";
+  $deleteBtn.addEventListener("click", function(e) {
+    e.target.parentNode.parentNode.remove();
+  });
+
+  // button change
+  $changeBtn.appendChild(document.createTextNode("Изменить"));
+  $changeBtn.className = "btn btn-success btn-sm me-2";
+  $changeBtn.addEventListener("click", () => {
+    console.log("hello");
+  });
+
+  $actions.append($changeBtn, $deleteBtn);
 
   $worker.append(
     $number,
@@ -61,7 +75,8 @@ function newWorker(worker) {
     $gender,
     $education,
     $workStart,
-    $dismissalDate
+    $dismissalDate,
+    $actions
   );
 
   return $worker;

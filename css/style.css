@@ -43,3 +43,4 @@ table tbody tr {
 table tr td:first-child::before {
   content: counter(rowNumber);
 }
+
