@@ -28,7 +28,7 @@ import Worker from "./worker.js";
 let workers = [];
 
 const $workerList = document.getElementById("workers-list");
-const $workerListThAll = document.querySelectorAll(".workers-table th");
+const $workerListThAll = document.querySelectorAll(".workers-list");
 
 let column = "fullName";
 let columnDir = true;
@@ -44,6 +44,7 @@ function newWorker(worker) {
   const $workStart = document.createElement("td");
   const $dismissalDate = document.createElement("td");
 
+ 
   $fio.textContent = worker.fullName;
   $birthDate.textContent = worker.getBirthDateString();
   $age.textContent = worker.getAge();
@@ -68,6 +69,7 @@ function newWorker(worker) {
 
 function render() {
   $workerList.innerHTML = "";
+
   for (const worker of workers) {
     $workerList.append(newWorker(worker));
   }
@@ -83,6 +85,7 @@ document
   .getElementById("add-worker")
   .addEventListener("submit", function (event) {
     event.preventDefault();
+    console.log(workers);
     workers.push(
       new Worker(
         document.getElementById("input-lastName").value,
@@ -93,7 +96,8 @@ document
         document.querySelector("input[name=gender]:checked").value
       )
     );
-    document.getElementById("add-worker").reset(), render();
+    document.getElementById("add-worker").reset();
+    render();
   });
 
 render();

@@ -27,10 +27,19 @@ form {
 
 table {
   border: 1px solid grey !important;
+  counter-reset: rowNumber;
 }
 
 button[type="reset"] {
   border-style: solid !important;
   box-shadow: none !important;
   outline: none !important;
+}
+
+table tbody tr {
+  counter-increment: rowNumber;
+}
+
+table tr td:first-child::before {
+  content: counter(rowNumber);
 }

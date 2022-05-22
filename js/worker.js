@@ -1,5 +1,13 @@
 export default class Worker {
-  constructor(lastName, firstName, middleName, birthDate, education, gender, dismissalDate) {
+  constructor(
+    lastName,
+    firstName,
+    middleName,
+    birthDate,
+    education,
+    gender,
+    dismissalDate
+  ) {
     this.lastName = lastName;
     this.firstName = firstName;
     this.middleName = middleName;
@@ -12,7 +20,7 @@ export default class Worker {
   get fullName() {
     return `${this.lastName} ${this.firstName} ${this.middleName}`;
   }
-  
+
   getAge() {
     const today = new Date();
     let age = today.getFullYear() - this.birthDate.getFullYear();
@@ -34,13 +42,7 @@ export default class Worker {
   }
 
   getCurrentTime() {
-    const output = new Date().toLocaleString().replace(',','')
+    const output = new Date().toLocaleString().replace(",", "");
     return output;
   }
 }
-
-
-
-
-
-
